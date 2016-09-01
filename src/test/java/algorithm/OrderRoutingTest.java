@@ -12,8 +12,8 @@ import static org.junit.Assert.assertThat;
 
 public class OrderRoutingTest {
 
-    PriorizationStrategy ps = new PriorizationStrategy();
-    ShippingMethod sm = new ShippingMethod();
+    PriorizationStrategy priorizationStrategy = new PriorizationStrategy();
+    ShippingMethod shippingMethod = new ShippingMethod();
     @Test
     public void shouldExistFiveShippings() {
 
@@ -23,7 +23,7 @@ public class OrderRoutingTest {
     }
 
     @Test
-    public void shouldExistQuantShippingMethods() {
+    public void shouldExistAmountShippingMethods() {
         OrderRouting order = new OrderRouting();
         Iterator<DistributionCenters> distributionCenters = order.getCenters().iterator();
         assertThat(distributionCenters.next().getShippingMethod().size(), is(2));
@@ -84,7 +84,7 @@ public class OrderRoutingTest {
         centers.add(new Center("Brazil", "Keyboard", 2));
         centers.add(new Center("France", "Mouse", 2));
         products.add(new Product("Keyboard", 2));
-        Request request = new Request(centers, sm.getDHL(), ps.getNone(), products);
+        Request request = new Request(centers, shippingMethod.getDHL(), priorizationStrategy.getNone(), products);
 
         Response response = order.solver(request);
         Center centersOut = response.getCentersOut().get(0);
@@ -103,7 +103,7 @@ public class OrderRoutingTest {
         centers.add(new Center("Brazil", "Mouse", 2));
         centers.add(new Center("South Africa", "Mouse", 2));
         products.add(new Product("Mouse", 1));
-        Request request = new Request(centers, sm.getUPS(), ps.getNone(), products);
+        Request request = new Request(centers, shippingMethod.getUPS(), priorizationStrategy.getNone(), products);
 
         Response response = order.solver(request);
         Center centersOut = response.getCentersOut().get(0);
@@ -125,7 +125,7 @@ public class OrderRoutingTest {
         centers.add(new Center("France", "Keyboard", 2));
         products.add(new Product("Mouse", 4));
         products.add(new Product("Keyboard", 3));
-        Request request = new Request(centers, sm.getFedex(), ps.getNone(), products);
+        Request request = new Request(centers, shippingMethod.getFedex(), priorizationStrategy.getNone(), products);
 
         Response response = order.solver(request);
         Iterator<Center> centerIterator = response.getCentersOut().iterator();
@@ -156,7 +156,7 @@ public class OrderRoutingTest {
         centers.add(new Center("France", "Keyboard", 2));
         products.add(new Product("Mouse", 1));
         products.add(new Product("Keyboard", 1));
-        Request request = new Request(centers, sm.getDHL(), ps.getLargestAvailability(), products);
+        Request request = new Request(centers, shippingMethod.getDHL(), priorizationStrategy.getLargestAvailability(), products);
 
         Response response = order.solver(request);
         Iterator<Center> centerIterator = response.getCentersOut().iterator();
@@ -186,7 +186,7 @@ public class OrderRoutingTest {
         centers.add(new Center("France", "Mouse", 2));
         products.add(new Product("Mouse", 1));
         products.add(new Product("Keyboard", 1));
-        Request request = new Request(centers, sm.getDHL(), ps.getShortestAvailability(), products);
+        Request request = new Request(centers, shippingMethod.getDHL(), priorizationStrategy.getShortestAvailability(), products);
 
         Response response = order.solver(request);
         Iterator<Center> centerIterator = response.getCentersOut().iterator();
@@ -216,7 +216,7 @@ public class OrderRoutingTest {
         centers.add(new Center("France", "Mouse", 2));
         products.add(new Product("Mouse", 1));
         products.add(new Product("Keyboard", 1));
-        Request request = new Request(centers, sm.getDHL(), ps.getLargestCapacity(), products);
+        Request request = new Request(centers, shippingMethod.getDHL(), priorizationStrategy.getLargestCapacity(), products);
 
         Response response = order.solver(request);
         Iterator<Center> centerIterator = response.getCentersOut().iterator();
@@ -252,7 +252,7 @@ public class OrderRoutingTest {
         products.add(new Product("Keyboard", 3));
         products.add(new Product("Monitor", 3));
         products.add(new Product("Camera", 1));
-        Request request = new Request(centers, sm.getFedex(), ps.getNone(), products);
+        Request request = new Request(centers, shippingMethod.getFedex(), priorizationStrategy.getNone(), products);
 
 
         Response response = order.solver(request);
@@ -304,8 +304,8 @@ public class OrderRoutingTest {
         centers.add(new Center("China", "Mouse", 4));
         centers.add(new Center("Brazil", "Mouse", 3));
         products.add(new Product("Mouse", 5));
-        Request request = new Request(centers, sm.getFedex(), ps.getNone(), products);
+        Request request = new Request(centers, shippingMethod.getFedex(), priorizationStrategy.getNone(), products);
 
-        assertThat(order.hasFulFilled(request), is("Order cannot be fulfilled."));
+        assertThat(order.hasFulFilled(request), is(order.ORDER_CANNOT_BE_FULFILLED));
     }
 }

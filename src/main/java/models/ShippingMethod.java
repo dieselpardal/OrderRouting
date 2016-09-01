@@ -2,11 +2,9 @@ package models;
 
 public class ShippingMethod {
 
-    private final String DHL= "DHL";
-    private final String Fedex= "Fedex";
-    private final String UPS= "UPS";
-
-
+    private final String DHL = "DHL";
+    private final String Fedex = "Fedex";
+    private final String UPS = "UPS";
 
     public String getDHL() {
         return DHL;

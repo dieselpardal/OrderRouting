@@ -1,4 +1,7 @@
-package models;
+package algorithm;
+
+import models.Center;
+import models.Product;
 
 import java.util.List;
 
