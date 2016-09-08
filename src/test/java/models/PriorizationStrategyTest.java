@@ -9,10 +9,10 @@ public class PriorizationStrategyTest {
 
     @Test
     public void testAllPriorizationStrategy() {
-        PriorizationStrategy priorizationStrategy = new PriorizationStrategy();
-        assertThat(priorizationStrategy.getNone(), is("None"));
-        assertThat(priorizationStrategy.getLargestAvailability(), is("LargestAvailability"));
-        assertThat(priorizationStrategy.getShortestAvailability(), is("ShortestAvailability"));
-        assertThat(priorizationStrategy.getLargestCapacity(), is("LargestCapacity"));
+
+        assertThat(PriorizationStrategy.None, is(PriorizationStrategy.None));
+        assertThat(PriorizationStrategy.LargestCapacity, is(PriorizationStrategy.LargestCapacity));
+        assertThat(PriorizationStrategy.LargestInventory, is(PriorizationStrategy.LargestInventory));
+        assertThat(PriorizationStrategy.ShortestInventory, is(PriorizationStrategy.ShortestInventory));
     }
 }

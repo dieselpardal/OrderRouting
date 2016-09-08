@@ -1,25 +1,27 @@
 package algorithm;
 
 import models.Center;
+import models.PriorizationStrategy;
 import models.Product;
+import models.ShippingMethod;
 
 import java.util.List;
 
 public class Request {
     private final List<Center> centers;
-    private final String shippingMethod;
-    private final String priorizationStrategy;
+    private final ShippingMethod shippingMethod;
+    private final PriorizationStrategy priorizationStrategy;
     private final List<Product> products;
 
     public List<Center> getCenters() {
         return centers;
     }
 
-    public String getShippingMethod() {
+    public ShippingMethod getShippingMethod() {
         return shippingMethod;
     }
 
-    public String getPriorizationStrategy() {
+    public PriorizationStrategy getPriorizationStrategy() {
         return priorizationStrategy;
     }
 
@@ -27,7 +29,7 @@ public class Request {
         return products;
     }
 
-    public Request(List<Center> centers, String shippingMethod, String priorizationStrategy, List<Product> products) {
+    public Request(List<Center> centers, ShippingMethod shippingMethod, PriorizationStrategy priorizationStrategy, List<Product> products) {
         this.centers = centers;
         this.shippingMethod = shippingMethod;
         this.priorizationStrategy = priorizationStrategy;

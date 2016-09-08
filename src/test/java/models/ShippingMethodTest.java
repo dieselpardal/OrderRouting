@@ -9,9 +9,8 @@ public class ShippingMethodTest {
 
     @Test
     public void testNewShippingMethod() {
-        ShippingMethod shippingMethod = new ShippingMethod();
-        assertThat(shippingMethod.getDHL(), is("DHL"));
-        assertThat(shippingMethod.getFedex(), is("Fedex"));
-        assertThat(shippingMethod.getUPS(), is("UPS"));
+        assertThat(ShippingMethod.DHL, is(ShippingMethod.DHL));
+        assertThat(ShippingMethod.FEDEX, is(ShippingMethod.FEDEX));
+        assertThat(ShippingMethod.UPS, is(ShippingMethod.UPS));
     }
 }

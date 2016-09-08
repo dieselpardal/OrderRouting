@@ -16,7 +16,7 @@ public class ResponseTest {
         centers.add(new Center("Brazil", "Keyboard", 2));
         Response response = new Response(centers);
 
-        assertThat(response.getCentersOut().get(0).getCenter(), is("Brazil"));
+        assertThat(response.getCentersOut().get(0).getWareHouse(), is("Brazil"));
         assertThat(response.getCentersOut().get(0).getProduct(), is("Keyboard"));
         assertThat(response.getCentersOut().get(0).getQuantity(), is(2));
 

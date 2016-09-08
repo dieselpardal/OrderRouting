@@ -2,18 +2,18 @@ package models;
 
 public class Center {
 
-    private final String center;
+    private final String wareHouse;
     private final String product;
     private final int quantity;
 
-    public Center(String center, String product, int quantity) {
-        this.center = center;
+    public Center(String wareHouse, String product, int quantity) {
+        this.wareHouse = wareHouse;
         this.product = product;
         this.quantity = quantity;
     }
 
-    public String getCenter() {
-        return center;
+    public String getWareHouse() {
+        return wareHouse;
     }
 
     public String getProduct() {
